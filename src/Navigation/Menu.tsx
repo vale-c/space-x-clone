@@ -1,5 +1,5 @@
-import { ReactComponent as SpaceXLogo } from '../assets/spacex.svg';
-import { useEffect, useRef, useState } from 'react';
+import { ReactComponent as SpaceXLogo } from "../assets/spacex.svg";
+import { useEffect, useRef, useState } from "react";
 
 type MenuItem = {
   href: string;
@@ -7,22 +7,28 @@ type MenuItem = {
 };
 
 const TopBarMenuItems: MenuItem[] = [
-  { href: 'falcon9', title: 'FALCON 9' },
-  { href: 'falconheavy', title: 'FALCON HEAVY' },
-  { href: 'dragon', title: 'DRAGON' },
-  { href: 'starship', title: 'STARSHIP' },
-  { href: 'humanspaceflight', title: 'HUMAN SPACEFLIGHT' },
-  { href: 'rideshare', title: 'RIDESHARE' },
-  { href: 'starshield', title: 'STARSHIELD' },
-  { href: 'starlink', title: 'STARLINK' },
+  { href: "https://www.spacex.com/vehicles/falcon-9/", title: "falcon 8" },
+  {
+    href: "https://www.spacex.com/vehicles/falcon-heavy/",
+    title: "falcon heavy",
+  },
+  { href: "https://www.spacex.com/vehicles/dragon/", title: "dragon" },
+  { href: "https://www.spacex.com/vehicles/starship/", title: "starship" },
+  {
+    href: "https://www.spacex.com/human-spaceflight/",
+    title: "human spaceflight",
+  },
+  { href: "https://www.spacex.com/rideshare/", title: "rideshare" },
+  { href: "https://www.spacex.com/starshield/", title: "starshield" },
+  { href: "https://www.starlink.com/", title: "starlink" },
 ];
 
 const SideBarMenuItems: MenuItem[] = [
-  { href: 'mission', title: 'mission' },
-  { href: 'launches', title: 'launches' },
-  { href: 'careers', title: 'careers' },
-  { href: 'updates', title: 'updates' },
-  { href: 'shop', title: 'shop' },
+  { href: "https://www.spacex.com/mission/", title: "mission" },
+  { href: "https://www.spacex.com/launches/", title: "launches" },
+  { href: "https://www.spacex.com/careers/", title: "careers" },
+  { href: "https://www.spacex.com/updates/", title: "updates" },
+  { href: "https://shop.spacex.com/", title: "shop" },
 ];
 
 export const Menu = () => {
@@ -42,26 +48,26 @@ export const Menu = () => {
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     } else {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
   return (
     <>
-      <nav className="py-0 lg:py-6 justify-between lg:flex break-keep px-16 justify-between items-center bg-black xl:px-52">
+      <nav className="py-0 lg:py-6 justify-between lg:flex break-keep px-16 justify-between items-center xl:px-52 absolute w-full z-10 mix-blend-lighten">
         <div className="flex">
-          <SpaceXLogo className="hidden lg:block w-56 h-auto mr-12" />
+          <SpaceXLogo className="hidden lg:block w-56 h-auto mr-12 " />
           <ul className="hidden lg:flex mt-4 space-x-8 font-bold text-xs text-white tracking-tight">
             {TopBarMenuItems.map((item: MenuItem) => (
               <li key={item.title}>
                 <a
-                  href="#!"
+                  href={item.href}
                   className="hover:underline ease-in-out duration-300 uppercase"
                 >
                   {item.title}
@@ -71,30 +77,33 @@ export const Menu = () => {
           </ul>
         </div>
         <div className="flex justify-between lg:absolute right-12 md:flex justify-items-end items-center mt-4">
-          <a href="#!" className="lg:text-white font-bold text-xs uppercase">
+          <a
+            href="https://shop.spacex.com/"
+            className="lg:text-white font-bold text-xs uppercase"
+          >
             shop
           </a>
           <SpaceXLogo className="lg:hidden w-36" />
           <button onClick={handleToggle} className="text-white text-2xl ml-8">
-            {isOpen ? '✕' : '☰'}
+            {isOpen ? "✕" : "☰"}
           </button>
         </div>
       </nav>
       <aside
         ref={node}
         className={`transform top-0 right-0 w-64 bg-black fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+          isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="text-white p-5">
           <button onClick={handleToggle} className="text-xl float-right">
-            {isOpen ? '✕' : ''}
+            {isOpen ? "✕" : ""}
           </button>
           <ul className="space-y-4 text-right mt-12">
             {SideBarMenuItems.map((item: MenuItem) => (
               <li key={item.title}>
                 <a
-                  href="#!"
+                  href={item.href}
                   className="hover:underline ease-in-out duration-300 uppercase"
                 >
                   {item.title}
