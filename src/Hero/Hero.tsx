@@ -40,7 +40,7 @@ export const Hero = () => {
             alt="hero"
             className="w-full object-cover min-h-[850px]"
           />
-          <section className="absolute bottom-36 left-16 xl:left-36 drop-shadow-lg">
+          <section className="absolute bottom-36 left-16 xl:left-24 drop-shadow-lg">
             {card.launchType && (
               <h4 className="mb-2 text-xl uppercase font-light tracking-tight text-white">
                 {card.launchType} launch
