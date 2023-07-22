@@ -95,16 +95,16 @@ export const Menu = () => {
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="text-white p-5">
+        <div className="text-white p-8">
           <button onClick={handleToggle} className="text-xl float-right">
             {isOpen ? '✕' : ''}
           </button>
-          <ul className="space-y-4 text-right mt-12">
+          <ul className="divide-y divide-slate-600 text-right mt-12">
             {SideBarMenuItems.map((item: MenuItem) => (
-              <li key={item.title}>
+              <li key={item.title} className="py-2">
                 <a
                   href={item.href}
-                  className="hover:underline ease-in-out duration-300 uppercase"
+                  className="uppercase hover:text-slate-300 ease-in-out duration-500"
                 >
                   {item.title}
                 </a>
