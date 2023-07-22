@@ -60,7 +60,7 @@ export const Menu = () => {
 
   return (
     <>
-      <nav className="py-0 lg:py-6 justify-between lg:flex break-keep px-16 justify-between items-center xl:px-40 absolute w-full z-10 mix-blend-lighten">
+      <nav className="py-0 lg:py-6 justify-between lg:flex break-keep px-16 justify-between items-center xl:px-36 absolute w-full z-10 mix-blend-lighten">
         <div className="flex">
           <SpaceXLogo className="hidden lg:block w-56 h-auto mr-12 " />
           <ul className="hidden lg:flex mt-4 space-x-8 font-bold text-xs text-white tracking-tight">
