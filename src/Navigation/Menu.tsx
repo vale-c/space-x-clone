@@ -6,7 +6,7 @@ type MenuItem = {
   title: string;
 };
 
-const MenuItems: MenuItem[] = [
+const TopBarMenuItems: MenuItem[] = [
   { href: 'falcon9', title: 'FALCON 9' },
   { href: 'falconheavy', title: 'FALCON HEAVY' },
   { href: 'dragon', title: 'DRAGON' },
@@ -17,7 +17,15 @@ const MenuItems: MenuItem[] = [
   { href: 'starlink', title: 'STARLINK' },
 ];
 
-export const NavBar = () => {
+const SideBarMenuItems: MenuItem[] = [
+  { href: 'mission', title: 'mission' },
+  { href: 'launches', title: 'launches' },
+  { href: 'careers', title: 'careers' },
+  { href: 'updates', title: 'updates' },
+  { href: 'shop', title: 'shop' },
+];
+
+export const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const node = useRef<HTMLInputElement>(null);
 
@@ -46,15 +54,15 @@ export const NavBar = () => {
 
   return (
     <>
-      <nav className="py-0 lg:py-6 justify-center lg:flex break-keep px-16 justify-between items-center bg-black">
-        <div className="flex items-center">
-          <SpaceXLogo className="hidden lg:block w-56 h-auto mr-8" />
-          <ul className="hidden lg:flex mt-4 space-x-5 font-bold text-xs text-white tracking-tight">
-            {MenuItems.map((item: MenuItem) => (
+      <nav className="py-0 lg:py-6 justify-between lg:flex break-keep px-16 justify-between items-center bg-black xl:px-52">
+        <div className="flex">
+          <SpaceXLogo className="hidden lg:block w-56 h-auto mr-12" />
+          <ul className="hidden lg:flex mt-4 space-x-8 font-bold text-xs text-white tracking-tight">
+            {TopBarMenuItems.map((item: MenuItem) => (
               <li key={item.title}>
                 <a
                   href="#!"
-                  className="hover:underline ease-in-out duration-300"
+                  className="hover:underline ease-in-out duration-300 uppercase"
                 >
                   {item.title}
                 </a>
@@ -62,7 +70,7 @@ export const NavBar = () => {
             ))}
           </ul>
         </div>
-        <div className="flex justify-between lg:flex justify-items-end items-center mt-4">
+        <div className="flex justify-between lg:absolute right-12 md:flex justify-items-end items-center mt-4">
           <a href="#!" className="lg:text-white font-bold text-xs uppercase">
             shop
           </a>
@@ -83,11 +91,11 @@ export const NavBar = () => {
             {isOpen ? '✕' : ''}
           </button>
           <ul className="space-y-4 text-right mt-12">
-            {MenuItems.map((item: MenuItem) => (
+            {SideBarMenuItems.map((item: MenuItem) => (
               <li key={item.title}>
                 <a
                   href="#!"
-                  className="hover:underline ease-in-out duration-300"
+                  className="hover:underline ease-in-out duration-300 uppercase"
                 >
                   {item.title}
                 </a>

@@ -1,10 +1,10 @@
-import { NavBar } from './Navigation/NavBar';
+import { Menu } from './Navigation/Menu';
 import { Hero } from './Hero/Hero';
 
 export default function App() {
   return (
     <>
-      <NavBar />
+      <Menu />
       <Hero />
     </>
   );
