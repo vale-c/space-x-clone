@@ -76,7 +76,7 @@ export const Menu = () => {
             ))}
           </ul>
         </div>
-        <div className="flex justify-between lg:absolute right-12 md:flex justify-items-end items-center mt-4">
+        <div className="flex justify-between right-12 lg:absolute md:flex justify-items-end items-center mt-4">
           <a
             href="https://shop.spacex.com/"
             className="lg:text-white font-bold text-xs uppercase"

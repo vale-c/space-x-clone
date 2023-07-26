@@ -15,7 +15,7 @@ const heroCards: HeroCard[] = [
     header: 'starlink mission',
     image: hero1,
     link: 'https://www.spacex.com/launches/mission/?missionId=sl-6-6',
-    launchType: 'upcoming',
+    launchType: 'recent',
   },
   {
     header: 'esa euclid mission',
@@ -40,13 +40,13 @@ export const Hero = () => {
             alt="hero"
             className="w-full object-cover min-h-[850px]"
           />
-          <section className="absolute bottom-36 left-16 xl:left-24 drop-shadow-lg">
+          <section className="absolute bottom-36 left-6 xl:left-24 drop-shadow-lg">
             {card.launchType && (
-              <h4 className="mb-2 text-xl uppercase font-light tracking-tight text-white">
+              <h4 className="mb-1 text-xl uppercase font-light tracking-tight text-white">
                 {card.launchType} launch
               </h4>
             )}
-            <h2 className="text-3xl lg:text-5xl uppercase font-bold tracking-tight text-white mb-12">
+            <h2 className="text-3xl lg:text-5xl uppercase font-bold tracking-tight text-white mb-8 sm:mb-12">
               {card.header}
             </h2>
             <a
