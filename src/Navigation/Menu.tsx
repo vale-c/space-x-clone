@@ -6,30 +6,45 @@ type MenuItem = {
   title: string;
 };
 
-const TopBarMenuItems: MenuItem[] = [
-  { href: 'https://www.spacex.com/vehicles/falcon-9/', title: 'falcon 8' },
-  {
-    href: 'https://www.spacex.com/vehicles/falcon-heavy/',
-    title: 'falcon heavy',
-  },
-  { href: 'https://www.spacex.com/vehicles/dragon/', title: 'dragon' },
-  { href: 'https://www.spacex.com/vehicles/starship/', title: 'starship' },
-  {
-    href: 'https://www.spacex.com/human-spaceflight/',
-    title: 'human spaceflight',
-  },
-  { href: 'https://www.spacex.com/rideshare/', title: 'rideshare' },
-  { href: 'https://www.spacex.com/starshield/', title: 'starshield' },
-  { href: 'https://www.starlink.com/', title: 'starlink' },
-];
+const MenuItem = ({
+  item,
+  className,
+}: {
+  item: MenuItem;
+  className: string;
+}) => (
+  <li key={item.title}>
+    <a href={item.href} className={className}>
+      {item.title}
+    </a>
+  </li>
+);
 
-const SideBarMenuItems: MenuItem[] = [
-  { href: 'https://www.spacex.com/mission/', title: 'mission' },
-  { href: 'https://www.spacex.com/launches/', title: 'launches' },
-  { href: 'https://www.spacex.com/careers/', title: 'careers' },
-  { href: 'https://www.spacex.com/updates/', title: 'updates' },
-  { href: 'https://shop.spacex.com/', title: 'shop' },
-];
+const MenuItems: { [key: string]: MenuItem[] } = {
+  TopBarMenu: [
+    { href: 'https://www.spacex.com/vehicles/falcon-9/', title: 'falcon 9' },
+    {
+      href: 'https://www.spacex.com/vehicles/falcon-heavy/',
+      title: 'falcon heavy',
+    },
+    { href: 'https://www.spacex.com/vehicles/dragon/', title: 'dragon' },
+    { href: 'https://www.spacex.com/vehicles/starship/', title: 'starship' },
+    {
+      href: 'https://www.spacex.com/human-spaceflight/',
+      title: 'human spaceflight',
+    },
+    { href: 'https://www.spacex.com/rideshare/', title: 'rideshare' },
+    { href: 'https://www.spacex.com/starshield/', title: 'starshield' },
+    { href: 'https://www.starlink.com/', title: 'starlink' },
+  ],
+  SideBarMenu: [
+    { href: 'https://www.spacex.com/mission/', title: 'mission' },
+    { href: 'https://www.spacex.com/launches/', title: 'launches' },
+    { href: 'https://www.spacex.com/careers/', title: 'careers' },
+    { href: 'https://www.spacex.com/updates/', title: 'updates' },
+    { href: 'https://shop.spacex.com/', title: 'shop' },
+  ],
+};
 
 export const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,16 +62,12 @@ export const Menu = () => {
   };
 
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]);
+  }, []);
 
   return (
     <>
@@ -64,15 +75,12 @@ export const Menu = () => {
         <div className="flex">
           <SpaceXLogo className="hidden lg:block w-56 h-auto mr-12 " />
           <ul className="hidden lg:flex mt-4 space-x-8 font-bold text-xs text-white tracking-tight">
-            {TopBarMenuItems.map((item: MenuItem) => (
-              <li key={item.title}>
-                <a
-                  href={item.href}
-                  className="hover:underline ease-in-out duration-300 uppercase"
-                >
-                  {item.title}
-                </a>
-              </li>
+            {MenuItems.TopBarMenu.map((item: MenuItem) => (
+              <MenuItem
+                key={item.title}
+                item={item}
+                className="hover:underline ease-in-out duration-300 uppercase"
+              />
             ))}
           </ul>
         </div>
@@ -84,8 +92,27 @@ export const Menu = () => {
             shop
           </a>
           <SpaceXLogo className="lg:hidden w-36" />
-          <button onClick={handleToggle} className="text-white text-2xl ml-8">
-            {isOpen ? '✕' : '☰'}
+          <button
+            className="flex flex-col h-4 w-4 rounded justify-center items-center group bg-transparent px-8"
+            onClick={handleToggle}
+          >
+            <span
+              className={`block w-4 h-2 bg-white mb-1 transition-transform ${
+                isOpen ? 'rotate-45 translate-y-1.5' : 'rotate-0 translate-y-0'
+              }`}
+            ></span>
+            <span
+              className={`block w-4 h-2 bg-white mb-1 transition-opacity ${
+                isOpen ? 'opacity-0' : 'opacity-100'
+              }`}
+            ></span>
+            <span
+              className={`block w-4 h-2 bg-white transition-transform ${
+                isOpen
+                  ? '-rotate-45 -translate-y-1.5'
+                  : 'rotate-0 translate-y-0'
+              }`}
+            ></span>
           </button>
         </div>
       </nav>
@@ -100,15 +127,12 @@ export const Menu = () => {
             {isOpen ? '✕' : ''}
           </button>
           <ul className="divide-y divide-slate-600 text-right mt-12">
-            {SideBarMenuItems.map((item: MenuItem) => (
-              <li key={item.title} className="py-2">
-                <a
-                  href={item.href}
-                  className="uppercase hover:text-slate-300 ease-in-out duration-500"
-                >
-                  {item.title}
-                </a>
-              </li>
+            {MenuItems.SideBarMenu.map((item: MenuItem) => (
+              <MenuItem
+                key={item.title}
+                item={item}
+                className="uppercase hover:text-slate-300 ease-in-out duration-500"
+              />
             ))}
           </ul>
         </div>

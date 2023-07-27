@@ -1,5 +1,6 @@
 import { ReactComponent as Chevron } from '../assets/chevron.svg';
 import hero1 from '../assets/hero-1.jpg';
+import hero2 from '../assets/hero-2.jpg';
 import hero3 from '../assets/hero-3.jpeg';
 import hero4 from '../assets/hero-4.jpeg';
 
@@ -12,10 +13,16 @@ type HeroCard = {
 
 const heroCards: HeroCard[] = [
   {
-    header: 'starlink mission',
+    header: 'hughes Juppiter 3 mission',
     image: hero1,
     link: 'https://www.spacex.com/launches/mission/?missionId=sl-6-6',
-    launchType: 'recent',
+    launchType: 'upcoming',
+  },
+  {
+    header: 'starlink mission',
+    image: hero2,
+    link: 'https://www.spacex.com/launches/mission/?missionId=sl-6-7',
+    launchType: 'upcoming',
   },
   {
     header: 'esa euclid mission',
